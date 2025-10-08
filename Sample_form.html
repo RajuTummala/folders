@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+            display: none;
+        }
+        input {
+            display: block;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Register</h2>
+    <form id="regForm">
+        Username: 
+        <input type="text" id="username" name="username">
+        <div class="error" id="usernameError">Username is required</div>
+
+        Email: 
+        <input type="email" id="email" name="email">
+        <div class="error" id="emailError">Email is required</div>
+
+        Password: 
+        <input type="password" id="password" name="password">
+        <div class="error" id="passwordError">Password is required</div>
+
+        <input type="submit" value="Register">
+    </form>
+
+    <script>
+        const form = document.getElementById('regForm');
+
+        form.onsubmit = function(event) {
+            event.preventDefault(); 
+
+            let username = document.getElementById('username').value.trim();
+            let email = document.getElementById('email').value.trim();
+            let password = document.getElementById('password').value.trim();
+
+            let valid = true;
+
+            if (username === "") {
+                document.getElementById('usernameError').style.display = "block";
+                valid = false;
+            } else {
+                document.getElementById('usernameError').style.display = "none";
+            }
+
+            if (email === "") {
+                document.getElementById('emailError').style.display = "block";
+                valid = false;
+            } else {
+                document.getElementById('emailError').style.display = "none";
+            }
+            
+            if (password === "") {
+                document.getElementById('passwordError').style.display = "block";
+                valid = false;
+            } else {
+                document.getElementById('passwordError').style.display = "none";
+            }
+
+            if (valid) {
+                alert("Registration Successful!");
+                form.reset();
+            }
+        };
+    </script>
+</body>
+</html>
